@@ -1,0 +1,42 @@
+pipeline{
+
+agent any
+
+stages{
+
+stage('Build'){
+steps{
+bat "mvn clean compile"
+}
+}
+
+stage('Deploy'){
+steps{
+echo 'The application code is deployed successfully'
+}
+}
+
+stage('Test'){
+steps{
+bat "mvn test"
+echo 'The application code is tested successfully'
+}
+}
+
+stage('Unit Testing'){
+steps{
+bat "mvn compile"
+echo 'The application code is unit tested successfully'
+}
+}
+
+stage('Release'){
+steps{
+bat "mvn clean compile test package"
+echo 'The application code is released successfully'
+}
+}
+
+}
+
+}
